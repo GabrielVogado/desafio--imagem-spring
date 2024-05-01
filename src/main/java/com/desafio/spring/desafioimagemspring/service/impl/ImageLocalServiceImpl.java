@@ -30,7 +30,7 @@ public class ImageLocalServiceImpl implements ImageService {
             Path uploadPath = Paths.get(LOCAL_PATH);
             Files.copy(file.getInputStream(), uploadPath.resolve(Objects.requireNonNull(file.getOriginalFilename())), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
-            throw new RuntimeException("Failed to upload image", e);
+            throw new RuntimeException("Falha ao Carregar imagem", e);
         }
     }
 

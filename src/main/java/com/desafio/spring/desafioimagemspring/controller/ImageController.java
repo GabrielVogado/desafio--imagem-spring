@@ -27,6 +27,6 @@ public class ImageController {
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file) throws IOException {
         imageService.savedUploadImage(file);
-        return ResponseEntity.ok("Image uploaded successfully");
+        return ResponseEntity.ok("Upload de Imagem feito com Sucesso");
     }
 }
