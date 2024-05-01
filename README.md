@@ -33,7 +33,10 @@
 | :---------- | :--------- | :---------------------------------- |
 | `file` | `MultipartFile` |  A chave da sua API |
 
-No Postman, vé em Body, selecione a opção form-data e no campo chave, selecione a opção FILE
+- Abra o Postman e crie uma nova requisição POST para o endpoint de upload de imagem.
+- No corpo da requisição, selecione o tipo "form-data".
+- Adicione uma chave com o nome "file" e selecione o tipo "File". Carregue um arquivo de imagem para ser enviado.
+- Execute a requisição para testar o upload de imagem.
 
 #### Download da Imagem
 
