@@ -40,6 +40,11 @@ public class ImageLocalServiceImpl implements ImageService {
      */
     @Override
     public byte[] getDownloadImage(String nameImage) {
-        return new byte[0];
+        try {
+            Path imagePath = Paths.get(LOCAL_PATH).resolve(nameImage);
+            return Files.readAllBytes(imagePath);
+        } catch (IOException e) {
+            throw new RuntimeException("Falha ao Baixar o Arquivo de Imagem", e);
+        }
     }
 }

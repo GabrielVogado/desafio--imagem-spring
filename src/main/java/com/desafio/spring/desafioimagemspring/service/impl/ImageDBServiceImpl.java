@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Base64;
 
 
-@Component
+@Service
 @Profile("!local")
 public class ImageDBServiceImpl implements ImageService {
 
@@ -35,7 +35,7 @@ public class ImageDBServiceImpl implements ImageService {
             Image imageEntity = Image.builder().imageBase64(Base64.getEncoder().encodeToString(file.getBytes())).imageName(file.getOriginalFilename()).build();
             imageRepository.save(imageEntity);
         } catch (IOException e) {
-            throw new RuntimeException("Failed to upload image", e);
+            throw new RuntimeException("Falha Ao Carregar a Imagem", e);
         }
 
     }
@@ -46,6 +46,10 @@ public class ImageDBServiceImpl implements ImageService {
      */
     @Override
     public byte[] getDownloadImage(String nameImage) {
-        return new byte[0];
+        Image imageEntity = imageRepository.findImageByImageName(nameImage);
+        if (imageEntity == null) {
+            throw new RuntimeException("Imagen Não Encontrada");
+        }
+        return Base64.getDecoder().decode(imageEntity.getImageBase64());
     }
 }

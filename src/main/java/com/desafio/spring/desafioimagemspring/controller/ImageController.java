@@ -29,4 +29,10 @@ public class ImageController {
         imageService.savedUploadImage(file);
         return ResponseEntity.ok("Image uploaded successfully");
     }
+
+    @GetMapping(value = "/download/{imageName}")
+    public ResponseEntity<byte[]> downloadImage(@PathVariable(value = "imageName") String imageName) {
+        byte[] imageBytes = imageService.getDownloadImage(imageName);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
+    }
 }
